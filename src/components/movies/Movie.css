@@ -1,0 +1,10 @@
+.movie{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 40%;
+}
+
+.movie img{
+  width: 80px;
+  height: 100px;
+}
