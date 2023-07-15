@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import './Movie.css';
-import Description from './Description';
 
 
 const Movie =( {movie}) => {
 
-  const[openDescription, setOpenDescription] = useState(false)
+  // const[openDescription, setOpenDescription] = useState(false)
 
-  const descriptionHandler = () => {
-        setOpenDescription(!openDescription)
-  }
+  // const descriptionHandler = () => {
+  //       setOpenDescription(!openDescription)
+  // }
   return(
     <>
-    <div className="movie" onClick={descriptionHandler}>
+    <div className="movie">
       <div>
         <img src={movie.Poster} alt={movie.Title}/>
       </div>
@@ -21,7 +20,7 @@ const Movie =( {movie}) => {
         <h3>{movie.Year}</h3>
       </div>
     </div>
-     {openDescription && <Description />}
+
     </>
 
 
