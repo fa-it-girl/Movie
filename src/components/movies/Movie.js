@@ -4,26 +4,20 @@ import './Movie.css';
 
 const Movie =( {movie}) => {
 
-  // const[openDescription, setOpenDescription] = useState(false)
-
-  // const descriptionHandler = () => {
-  //       setOpenDescription(!openDescription)
-  // }
   return(
     <>
-    <div className="movie">
-      <div>
-        <img src={movie.Poster} alt={movie.Title}/>
-      </div>
-      <div>
+      <li>
+        <img src={movie.Poster} alt={`${movie.Title} poster`} />
         <h3>{movie.Title}</h3>
-        <h3>{movie.Year}</h3>
-      </div>
-    </div>
+        <div>
+          <p>
+            <span>🗓</span>
+            <span>{movie.Year}</span>
+          </p>
+        </div>
+      </li>
 
     </>
-
-
   );
 };
 

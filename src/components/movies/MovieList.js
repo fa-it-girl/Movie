@@ -1,14 +1,11 @@
 import Movie from './Movie';
-// import Button from './Button'
-// import { useState } from 'react';
 
 const MovieList = ({movies}) =>{
 
 
   return(
     <>
-
-    <ul>
+    <ul className="list">
       {movies.map((movie)=> (
         <Movie movie={movie}
                key={movie.imdbID}

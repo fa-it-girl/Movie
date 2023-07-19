@@ -1,8 +1,9 @@
 import Navbar from './components/Navbar/Navbar';
 import MovieList from './components/movies/MovieList';
 import { useState } from 'react';
-import Button from './components/movies/Button'
-import WachedMovies from './components/movies/WachedMovies';
+import Main from './components/movies/Main';
+import WachedMovies from './components/movies/WachedMoviesList';
+import Box from './components/movies/Box';
 
 const tempMovieData = [
   {
@@ -67,10 +68,15 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Button onClick={buttonHandler}>{isOpen ? '-' : '+'}</Button>
-      {isOpen && <MovieList movies={tempMovieData}/>}
-      <Button onClick={buttonWachedHandler}>{wachedIsOpen ? '-' : '+'}</Button>
-      {wachedIsOpen &&<WachedMovies wachedMovies = {tempWatchedData}/>}
+      < Main>
+        <Box>
+          <MovieList movies={tempMovieData}/>
+        </Box>
+        <Box>
+          <WachedMovies wachedMovies = {tempWatchedData}/>
+        </Box>
+      </Main>
+
 
     </div>
   );
