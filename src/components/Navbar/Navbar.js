@@ -1,14 +1,13 @@
 import Logo from './Logo';
 import SearchBar from './SearchBar';
-import './Navbar.css';
 import Result from './Results'
 
-const Navbar = () => {
+const Navbar = ({movies}) => {
  return(
-  <div className='navbar'>
+  <div className='nav-bar'>
    <Logo />
    <SearchBar />
-   <Result />
+   <Result movies={movies}/>
  </div>
 )
 };

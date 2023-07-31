@@ -16,7 +16,12 @@ const SearchBar = () => {
   return(
 
     <form onSubmit={submitHandler}>
-      <input type='search' placeholder="Seach movie" onChange={userInputHandler}/>
+      <input
+       type='text'
+       placeholder="Seach movie"
+       onChange={userInputHandler}
+       value={userInput}
+       className="search"/>
     </form>
   )
 };

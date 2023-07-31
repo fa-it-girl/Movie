@@ -4,6 +4,8 @@ import { useState } from 'react';
 import Main from './components/movies/Main';
 import WachedMovies from './components/movies/WachedMoviesList';
 import Box from './components/movies/Box';
+import './App.css'
+import StarRating from './components/StarRating';
 
 const tempMovieData = [
   {
@@ -53,29 +55,24 @@ const tempWatchedData = [
 ];
 
 function App() {
+  const [movies, setMovies] = useState(tempMovieData)
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [wachedIsOpen, setWachedIsOpen] = useState(false);
-
-  const buttonHandler =() => {
-     setIsOpen(!isOpen)
-
-  }
-
-  const buttonWachedHandler =() => {
-    setWachedIsOpen(!wachedIsOpen)
-  }
   return (
     <div className="App">
-      <Navbar />
+      <Navbar movies={movies}/>
+
       < Main>
         <Box>
-          <MovieList movies={tempMovieData}/>
+          <MovieList movies={movies}/>
         </Box>
         <Box>
           <WachedMovies wachedMovies = {tempWatchedData}/>
+          <StarRating maxRating={10} />
         </Box>
       </Main>
+
+
+
 
 
     </div>

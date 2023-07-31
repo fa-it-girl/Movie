@@ -1,7 +1,7 @@
-const Result = () => {
+const Result = ({movies}) => {
   return(
     <>
-     <h3 className="result">Found x movies</h3>
+     <h3 className="result">Found <strong>{movies.length}</strong> movies</h3>
     </>
   )
 };
