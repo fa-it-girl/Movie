@@ -2,11 +2,11 @@ import Logo from './Logo';
 import SearchBar from './SearchBar';
 import Result from './Results'
 
-const Navbar = ({movies}) => {
+const Navbar = ({movies, query, setQuery}) => {
  return(
   <div className='nav-bar'>
    <Logo />
-   <SearchBar />
+   <SearchBar query={query} setQuery={setQuery}/>
    <Result movies={movies}/>
  </div>
 )

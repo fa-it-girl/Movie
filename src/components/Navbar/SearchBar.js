@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-const SearchBar = () => {
-  const [userInput, setUserInput ] = useState('');
+const SearchBar = ({ query , setQuery}) => {
+  // const [query, setQuery ] = useState('');
 
   const userInputHandler = (e) => {
-      setUserInput(e.target.value)
-      console.log(e.target.value)
+      setQuery(e.target.value)
+
   }
 
   const submitHandler = (e) =>{
     e.preventDefault();
-    setUserInput('')
+    // setUserInput('')
   }
 
   return(
@@ -20,8 +20,9 @@ const SearchBar = () => {
        type='text'
        placeholder="Seach movie"
        onChange={userInputHandler}
-       value={userInput}
-       className="search"/>
+       className="search"
+       value={query}
+       />
     </form>
   )
 };

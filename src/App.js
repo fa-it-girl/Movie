@@ -1,11 +1,13 @@
 import Navbar from './components/Navbar/Navbar';
 import MovieList from './components/movies/MovieList';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Main from './components/movies/Main';
 import WachedMovies from './components/movies/WachedMoviesList';
 import Box from './components/movies/Box';
 import './App.css'
 import StarRating from './components/StarRating';
+import ErrorMessage from './components/ErrorMessage'
+import SelectedMovie from './components/movies/SelectedMovie';
 
 const tempMovieData = [
   {
@@ -55,25 +57,59 @@ const tempWatchedData = [
 ];
 
 function App() {
-  const [movies, setMovies] = useState(tempMovieData)
+  const [movies, setMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+  const [query, setQuery ] = useState('');
+  const [selectedId, setSelectedId] = useState(null)
+
+  const handleSelectMovie =(id) => {
+    setSelectedId(id)
+  }
+  useEffect(function(){
+    async function FetchMovies(){
+      try {
+        setIsLoading(true)
+        setError('')
+      const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=859f87b6&s=${query}`)
+
+      if ( !res.ok) throw new Error('Something went wrong');
+
+      const data = await res.json()
+
+      if (data.Response === 'False') throw new Error('Movie not found')
+
+      setMovies(data.Search)
+      setIsLoading(false)}
+      catch(error){
+        setError(error.message)
+      }
+    }
+    FetchMovies()
+  }, [query])
+
 
   return (
     <div className="App">
-      <Navbar movies={movies}/>
+      <Navbar movies={movies} query={query} setQuery={setQuery}/>
 
       < Main>
         <Box>
-          <MovieList movies={movies}/>
+          {isLoading && <h1 style= {{textAlign: 'center', marginTop: '10%'}}>Loading...</h1> }
+          {!isLoading && !error && <MovieList movies={movies} onSelelctMovie={handleSelectMovie}/>}
+          {error  &&  <ErrorMessage message={error}/> }
+
         </Box>
         <Box>
-          <WachedMovies wachedMovies = {tempWatchedData}/>
-          <StarRating maxRating={10} />
+          { selectedId ? <SelectedMovie  selectedId={selectedId}/> :
+              <>
+                  <WachedMovies wachedMovies = {tempWatchedData}/>
+                  <StarRating maxRating={10} />
+              </>
+          }
+
         </Box>
       </Main>
-
-
-
-
 
     </div>
   );
