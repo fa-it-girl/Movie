@@ -59,7 +59,7 @@ const tempWatchedData = [
 function App() {
   const [movies, setMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState("")
+  const [error, setError] = useState('')
   const [query, setQuery ] = useState('');
   const [selectedId, setSelectedId] = useState(null)
 
@@ -71,7 +71,7 @@ function App() {
       try {
         setIsLoading(true)
         setError('')
-      const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=859f87b6&s=${query}`)
+      const res = await fetch(`http://www.omdbapi.com/?apikey=859f87b6&s=${query}`)
 
       if ( !res.ok) throw new Error('Something went wrong');
 
@@ -95,19 +95,20 @@ function App() {
 
       < Main>
         <Box>
-          {isLoading && <h1 style= {{textAlign: 'center', marginTop: '10%'}}>Loading...</h1> }
-          {!isLoading && !error && <MovieList movies={movies} onSelelctMovie={handleSelectMovie}/>}
-          {error  &&  <ErrorMessage message={error}/> }
-
+          {isLoading && <h1 style= {{textAlign: 'center', marginTop: '10%'}}>Loading...</h1>}
+          {!isLoading && !error && (
+            <MovieList movies={movies} onSelelctMovie={handleSelectMovie} />
+          )}
+          {error && <ErrorMessage message={error} />}
         </Box>
+
+
         <Box>
           { selectedId ? <SelectedMovie  selectedId={selectedId}/> :
               <>
-                  <WachedMovies wachedMovies = {tempWatchedData}/>
-                  <StarRating maxRating={10} />
+                  {/* <WachedMovies wachedMovies = {tempWatchedData}/> */}
               </>
           }
-
         </Box>
       </Main>
 
