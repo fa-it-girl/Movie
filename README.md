@@ -29,9 +29,7 @@ Upon spotting a movie that piques their interest, users can simply click on it t
 | :-------- | :------- | :-------------------------------- |
 | `id`      | `string` | **Required**. Id of item to fetch |
 
-#### add(num1, num2)
 
-Takes two numbers and returns the sum.
 
 
 
@@ -54,7 +52,7 @@ Takes two numbers and returns the sum.
 
 ## Demo
 
-Insert gif or link to demo
+https://64cbb6e5bf1379075ad58aa5--sparkly-beijinho-80ac8e.netlify.app/
 
 
 ## Documentation
@@ -109,7 +107,7 @@ React (useState, UseEffect, useRef), HTML, CSS...
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/fa-it-girl/Movie
 ```
 
 Go to the project directory
