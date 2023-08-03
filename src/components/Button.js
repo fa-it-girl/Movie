@@ -4,7 +4,7 @@ const Button = () => {
   const[added, setAdded] = useState(false)
 
   const addedRatingHandler = () => {
-    setAdded(true)
+    setAdded(!added)
   }
   return(
     <>
